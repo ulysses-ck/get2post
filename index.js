@@ -11,11 +11,13 @@ app.get("/test", (req, res) => {
 app.get("/", (req, res) => {
 	const { url, json } = req.query;
 	try {
+		// turns into an Object
 		const dataJSON = JSON.parse(json);
 
 		axios({
 			method: "POST",
 			url: url,
+			// make like a form-data style dataJSON
 			data: new URLSearchParams(dataJSON),
 		})
 			.then((response) => {
