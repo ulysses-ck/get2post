@@ -10,9 +10,7 @@ app.get("/test", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-	let json = JSON.stringify(req.query.json);
-	console.log(req.query.url);
-	console.log(req.query.json);
+	let json = JSON.parse(req.query.json);
 	axios.post(req.query.url, json).then(
 		(response) => {
 			res.send(response.data);
