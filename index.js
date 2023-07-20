@@ -5,7 +5,11 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-app.get("/api/", (req, res) => {
+app.get("/test", (req, res) => {
+	res.send("test");
+});
+
+app.get("/", (req, res) => {
 	let json = JSON.stringify(req.query.json);
 	console.log(req.query.url);
 	console.log(req.query.json);
