@@ -9,8 +9,8 @@ app.get("/test", (req, res) => {
 	res.send("test");
 });
 
-app.get("/", (req, res) => {
-	let json = JSON.parse(req.query.json);
+app.get("/", (req, reos) => {
+	let json = JSON.parse(`${req.query.json}`);
 	axios.post(req.query.url, json).then(
 		(response) => {
 			res.send(response.data);
