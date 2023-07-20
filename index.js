@@ -11,6 +11,7 @@ app.get("/test", (req, res) => {
 
 app.get("/", (req, reos) => {
 	let json = JSON.parse(`${req.query.json}`);
+	console.log(typeof json)
 	axios.post(req.query.url, json).then(
 		(response) => {
 			res.send(response.data);
