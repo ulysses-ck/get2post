@@ -10,9 +10,10 @@ app.get("/test", (req, res) => {
 
 app.get("/", (req, res) => {
 	const { url, json } = req.query;
+
 	try {
 		// turns into an Object
-		const dataJSON = JSON.parse(json);
+		const dataJSON = JSON.parse(`${decodeURIComponent(json)}`);
 
 		axios({
 			method: "POST",
@@ -27,7 +28,7 @@ app.get("/", (req, res) => {
 				res.send({ message: "An error happens!", error });
 			});
 	} catch (error) {
-		res.send({ message: "Error at parse query param json" });
+		res.send({ message: "Error at parse query param json", rawJSON: json });
 	}
 });
 
